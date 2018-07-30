@@ -66,6 +66,9 @@ Plug 'maksimr/vim-jsbeautify'
 Plug 'cohama/lexima.vim'
 Plug 'joukevandermaas/vim-ember-hbs'
 Plug 'tpope/vim-commentary'
+Plug 'morhetz/gruvbox'
+Plug 'nathanaelkane/vim-indent-guides'
+
 call plug#end()
 
 " Airline theme
@@ -74,8 +77,10 @@ let g:Powerline_symbols='unicode'
 set backspace=indent,eol,start
 set guifont=Source\ Code\ Pro\ for\ Powerline:h14
 set background=dark
-colorscheme solarized
+colorscheme gruvbox
+let g:gruvbox_contrast_light='soft'
+let g:indent_guides_enable_on_vim_startup = 1
 set guioptions=
+set guifont=Fantasque\ Sans\ Mono:h14
 :nnoremap <C-n> :bnext<CR>
 :nnoremap <C-p> :bprevious<CR>
-set list
