@@ -68,6 +68,10 @@ Plug 'joukevandermaas/vim-ember-hbs'
 Plug 'tpope/vim-commentary'
 Plug 'morhetz/gruvbox'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rbenv'
+Plug 'tpope/vim-bundler'
 
 call plug#end()
 
@@ -75,12 +79,17 @@ call plug#end()
 let g:airline_powerline_fonts=1
 let g:Powerline_symbols='unicode'
 set backspace=indent,eol,start
-set guifont=Source\ Code\ Pro\ for\ Powerline:h14
 set background=dark
 colorscheme gruvbox
 let g:gruvbox_contrast_light='soft'
 let g:indent_guides_enable_on_vim_startup = 1
 set guioptions=
-set guifont=Fantasque\ Sans\ Mono:h14
+set guifont=Fantasque\ Sans\ Mono:h18
+set splitright
+set splitbelow
+
+map <C-t> :NERDTreeToggle<CR>
 :nnoremap <C-n> :bnext<CR>
 :nnoremap <C-p> :bprevious<CR>
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>

@@ -16,3 +16,4 @@ if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
     source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
 fi
 export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
+export EDITOR="/Applications/MacVim.app/Contents/bin/mvim"
