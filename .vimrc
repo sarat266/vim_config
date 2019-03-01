@@ -62,13 +62,14 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-commentary'
-Plug 'morhetz/gruvbox'
+Plug 'drewtempelmeyer/palenight.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-ruby/vim-ruby'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'blueyed/vim-diminactive'
 Plug 'terryma/vim-multiple-cursors'
+Plugin 'dracula/vim'
 
 call plug#end()
 
@@ -80,8 +81,10 @@ let g:airline_powerline_fonts=1
 let g:Powerline_symbols='unicode'
 set backspace=indent,eol,start
 set background=dark
-colorscheme gruvbox
-let g:gruvbox_contrast_light='soft'
+colorscheme palenight
+" colorscheme gruvbox
+" let g:gruvbox_contrast_light='soft'
+let g:lightline.colorscheme = 'palenight'
 let g:indent_guides_enable_on_vim_startup = 1
 set guioptions=
 set splitright
