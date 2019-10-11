@@ -64,12 +64,12 @@ call plug#begin()
  Plug 'maksimr/vim-jsbeautify'
  Plug 'cohama/lexima.vim'
  Plug 'tpope/vim-commentary'
- Plug 'drewtempelmeyer/palenight.vim'
- " Plug 'nathanaelkane/vim-indent-guides'
+ " Plug 'drewtempelmeyer/palenight.vim'
  Plug 'pangloss/vim-javascript'
  Plug 'mxw/vim-jsx'
  Plug 'blueyed/vim-diminactive'
  Plug 'terryma/vim-multiple-cursors'
+
 
 call plug#end()
 
@@ -81,10 +81,9 @@ let g:airline_powerline_fonts=1
 let g:Powerline_symbols='unicode'
 set backspace=indent,eol,start
 set background=dark
-colorscheme palenight
-" colorscheme gruvbox
-" let g:gruvbox_contrast_light='soft'
-let g:indent_guides_enable_on_vim_startup = 1
+" colorscheme palenight
+colorscheme gruvbox
+let g:gruvbox_contrast_dark='soft'
 set guioptions=
 set splitright
 set splitbelow
@@ -97,7 +96,9 @@ call vundle#begin()
  Plugin 'matze/vim-move'
  Plugin 'editorconfig/editorconfig-vim'
  Plugin 'Yggdroot/indentLine'
-call vundle#end()
+ Plugin 'morhetz/gruvbox'
+ Plugin 't9md/vim-ruby-xmpfilter'
+ call vundle#end()
 
 let g:move_key_modifier = 'C'
 
@@ -105,7 +106,6 @@ nnoremap <M-J> <C-W><C-J>
 nnoremap <M-K> <C-W><C-K>
 nnoremap <M-L> <C-W><C-L>
 nnoremap <A-H> <C-W><C-H>
-nnoremap <C-A> :let @*=expand("%:p")<CR>
 map <C-t> :NERDTreeToggle<CR>
 let g:nerdtree_tabs_autoclose=0
 :nnoremap <C-n> :bnext<CR>
@@ -125,3 +125,6 @@ let g:user_emmet_settings = {
 let g:indentLine_char_list = ['┊']
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '.'
+
+map <C-W> <Plug>(xmpfilter-mark)
+map <C-E> <Plug>(xmpfilter-run)
