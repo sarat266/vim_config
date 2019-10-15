@@ -128,3 +128,5 @@ let g:indentLine_leadingSpaceChar = '.'
 
 map <C-W> <Plug>(xmpfilter-mark)
 map <C-E> <Plug>(xmpfilter-run)
+
+set viminfo=
