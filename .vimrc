@@ -89,7 +89,7 @@ set splitright
 set splitbelow
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/autoload/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
  Plugin 'VundleVim/Vundle.vim'
@@ -102,10 +102,13 @@ call vundle#begin()
 
 let g:move_key_modifier = 'C'
 
-nnoremap <M-J> <C-W><C-J>
-nnoremap <M-K> <C-W><C-K>
-nnoremap <M-L> <C-W><C-L>
-nnoremap <A-H> <C-W><C-H>
+nnoremap <M-j> <C-W><C-J>
+nnoremap <M-k> <C-W><C-K>
+nnoremap <M-l> <C-W><C-L>
+nnoremap <M-h> <C-W><C-H>
+noremap <S-l> gt
+noremap <S-h> gT
+
 map <C-t> :NERDTreeToggle<CR>
 let g:nerdtree_tabs_autoclose=0
 :nnoremap <C-n> :bnext<CR>
@@ -126,7 +129,7 @@ let g:indentLine_char_list = ['┊']
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '.'
 
-map <C-W> <Plug>(xmpfilter-mark)
-map <C-E> <Plug>(xmpfilter-run)
+map <A-W> <Plug>(xmpfilter-mark)
+map <A-E> <Plug>(xmpfilter-run)
 
 set viminfo=
