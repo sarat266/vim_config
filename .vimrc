@@ -1,5 +1,6 @@
 " syntax on
 set guifont=FantasqueSansMono-Regular:h16
+runtime autoload/pathogen.vim
 set ttyfast
 set lazyredraw
 execute pathogen#infect()

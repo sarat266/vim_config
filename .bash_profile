@@ -18,4 +18,9 @@ fi
 export PATH="/Users/spagolu/nvim/bin:$PATH"
 export EDITOR="/Users/spagolu/nvim/bin/nvim"
 
+
+export PATH="$PATH:$HOME/.rvm/bin:/usr/local/Cellar/postgresql@11/11.10/bin/" # Add RVM to PATH for scripting
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 export WEB_TIMEOUT=3600
