@@ -33,8 +33,8 @@ let g:fzf_colors =
 set rnu
 map <C-F> :FZF<space><CR>
 map <C-S> :Ag<space><CR>
-map <C-b> :Windows<CR>
-map <C-x> :bp<bar>sp<bar>bn<bar>bd<CR>
+map <C-b> :Buff<CR>
+map <C-x> :bd
 map <C-r> :%s/
 map <C-,> :reg<CR>
 map <C-q> :q!<CR>
@@ -63,8 +63,9 @@ call plug#begin()
  Plug 'pangloss/vim-javascript'
  Plug 'mxw/vim-jsx'
  Plug 'terryma/vim-multiple-cursors'
- Plug 'ayu-theme/ayu-vim'
- " Plug 'junegunn/seoul256.vim'
+ "Plug 'ayu-theme/ayu-vim'
+ Plug 'tpope/vim-dispatch'
+ Plug 'junegunn/seoul256.vim'
 call plug#end()
 " Set paths for non-plugin manager managed plugin
 set runtimepath^=~/.vim/bundle/vim-move/plugin/move.vim
@@ -72,15 +73,12 @@ set timeoutlen=3000
 " Airline theme
 let g:airline_powerline_fonts=1
 let g:Powerline_symbols='unicode'
-let g:airline_theme='zenburn'
+let g:airline_theme='wombat'
 set backspace=indent,eol,start
 set guioptions=
 set splitright
 set splitbelow
 set termguicolors
-let ayucolor="light"
-colorscheme ayu
-let g:seoul256_light_background = 252
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 
@@ -96,6 +94,7 @@ call vundle#end()
 let g:move_key_modifier = 'C'
 noremap <S-l> gt
 noremap <S-h> gT
+noremap <S-x> :Dispatch rspec %<CR>
 nnoremap <Leader><space> :noh<CR>
 map <C-t> :NERDTreeToggle<CR>
 let g:nerdtree_tabs_autoclose=0
@@ -107,7 +106,6 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 :nnoremap <silent> <Leader>s :Ag <C-R><C-W><CR>
 :nnoremap <silent> <Leader>f :FZF -q <C-R><C-W><CR>
 :nnoremap <silent> <Leader>e :NERDTreeFind <CR>
-:nnoremap <silent> <Leader>] :Buff <CR>
 let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings = {
   \  'javascript.jsx' : {
@@ -115,8 +113,9 @@ let g:user_emmet_settings = {
     \  }
   \}
 let g:indentLine_leadingSpaceEnabled = 1
-let g:indentLine_leadingSpaceChar = '.'
-let g:indentLine_color_term = 239
+"let g:indentLine_leadingSpaceChar = '.'
+let g:indentLine_color_term = 180
+let g:indentLine_color_tty_light = 7
 let g:airline_left_sep = ''
 let g:airline#extensions#tabline#enabled = 1           " enable airline tabline
 let g:airline#extensions#tabline#show_close_button = 0 " remove 'X' at the end of the tabline
@@ -133,6 +132,10 @@ let g:airline#extensions#tabline#show_tab_type = 0     " disables the weird orna
 nmap ,w <Plug>(xmpfilter-mark)<CR>
 nmap ,e <Plug>(xmpfilter-run)<CR>
 
+let g:seoul256_background = 235
+color seoul256
+"let ayucolor="dark"
+"colorscheme ayu
 autocmd BufEnter NERD_tree* :LeadingSpaceDisable
 set viminfo=
 nmap ,cs :let @*=expand("%")<CR>
