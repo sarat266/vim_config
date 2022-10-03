@@ -15,8 +15,7 @@ if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
   __GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
     source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
 fi
-export PATH="/Users/spagolu/nvim/bin:$PATH"
-export EDITOR="/Users/spagolu/nvim/bin/nvim"
+export EDITOR="/usr/local/bin/nvim"
 
 
 export PATH="$PATH:$HOME/.rvm/bin:/usr/local/Cellar/postgresql@11/11.10/bin/" # Add RVM to PATH for scripting
@@ -24,3 +23,5 @@ export PATH="$PATH:$HOME/.rvm/bin:/usr/local/Cellar/postgresql@11/11.10/bin/" # 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export WEB_TIMEOUT=3600
+# Add Visual Studio Code (code)
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
