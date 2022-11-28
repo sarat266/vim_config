@@ -3,6 +3,8 @@
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
+
+export PATH=$PATH:/opt/homebrew/bin
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
@@ -11,15 +13,15 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
-if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
-  __GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
-    source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
+if [ -f "/opt/homebrew/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+    __GIT_PROMPT_DIR="/opt/homebrew/opt/bash-git-prompt/share"
+    source "/opt/homebrew/opt/bash-git-prompt/share/gitprompt.sh"
 fi
-export PATH="/Users/spagolu/nvim/bin:$PATH"
-export EDITOR="/Users/spagolu/nvim/bin/nvim"
+
+export EDITOR="/opt/homebrew/bin/nvim"
 
 
-export PATH="$PATH:$HOME/.rvm/bin:/usr/local/Cellar/postgresql@11/11.10/bin/" # Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.rvm/bin:/opt/homebrew/bin" # Add RVM to PATH for scripting
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
