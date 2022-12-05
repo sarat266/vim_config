@@ -1,12 +1,16 @@
-if [ -f $HOME/.bash_profile ]; then
-  source $HOME/.bash_profile
-fi
+source ~/vim_config/.bash-git-prompt/gitprompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+#export PS1='\w$(__git_ps1 "(%s)")\$ '
+export PS1=''\u@\h:\w\$
+
+source scl_source enable rh-git227
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # Git Aliases (sorted alphabetically with some inculsive functions)
 # Adapted from oh-my-zsh git alias plugin. "compdef" is a Z shell autocompletion function, disabled throughout where applicable. 
 
+alias ll='ls -laFrt --color=auto'
 alias g='git'
 
 alias ga='git add'
@@ -206,15 +210,15 @@ alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commi
 
 # Git completion for some of the above aliases.
 
- __git_complete g __git_main
- __git_complete ga _git_add
- __git_complete gb _git_branch
- __git_complete gc _git_commit
- __git_complete gcl _git_clone
- __git_complete gco _git_checkout
- __git_complete gd _git_diff
- __git_complete gl _git_pull
- __git_complete glg _git_log
- __git_complete gm _git_merge
- __git_complete gp _git_push
- __git_complete gsps _git_show
+# __git_complete g __git_main
+# __git_complete ga _git_add
+# __git_complete gb _git_branch
+# __git_complete gc _git_commit
+# __git_complete gcl _git_clone
+# __git_complete gco _git_checkout
+# __git_complete gd _git_diff
+# __git_complete gl _git_pull
+# __git_complete glg _git_log
+# __git_complete gm _git_merge
+# __git_complete gp _git_push
+# __git_complete gsps _git_show
