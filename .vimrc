@@ -66,6 +66,7 @@ call plug#begin()
  "Plug 'ayu-theme/ayu-vim'
  Plug 'tpope/vim-dispatch'
  Plug 'junegunn/seoul256.vim'
+ Plug 'ojroques/vim-oscyank', {'branch': 'main'}
 call plug#end()
 " Set paths for non-plugin manager managed plugin
 set runtimepath^=~/.vim/bundle/vim-move/plugin/move.vim
@@ -131,7 +132,6 @@ let g:airline#extensions#tabline#show_tab_type = 0     " disables the weird orna
 
 nmap ,w <Plug>(xmpfilter-mark)<CR>
 nmap ,e <Plug>(xmpfilter-run)<CR>
-
 let g:seoul256_background = 235
 color seoul256
 "let ayucolor="dark"

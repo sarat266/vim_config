@@ -1,8 +1,15 @@
+export EDITOR=/usr/local/bin/nvim
 source ~/vim_config/.bash-git-prompt/gitprompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 #export PS1='\w$(__git_ps1 "(%s)")\$ '
 export PS1=''\u@\h:\w\$
 
+alias ils='tmux attach -t illumio'
+alias term='ssh vagrant@devtest26'
+alias bo='bundle open'
+alias be='bundle exec'
+alias rc='be rails c'
+alias rr='be rails routes'
 source scl_source enable rh-git227
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
