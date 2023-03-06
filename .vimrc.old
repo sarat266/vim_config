@@ -65,6 +65,7 @@ call plug#begin()
  Plug 'terryma/vim-multiple-cursors'
  Plug 'tpope/vim-dispatch'
  Plug 'junegunn/seoul256.vim'
+ Plug 'ojroques/vim-oscyank', {'branch': 'main'}
  Plug 'fedepujol/move.nvim'
  Plug 'wincent/vim-clipper'
 
@@ -103,7 +104,7 @@ let g:nerdtree_tabs_autoclose=0
 
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-:nnoremap <silent> <Leader>s :Rg <C-R><C-W><CR>
+:nnoremap <silent> <Leader>s :Ag <C-R><C-W><CR>
 :nnoremap <silent> <Leader>f :FZF -q <C-R><C-W><CR>
 :nnoremap <silent> <Leader>e :NERDTreeFind <CR>
 let g:user_emmet_leader_key='<Tab>'
@@ -142,6 +143,11 @@ set nofoldenable
 let ruby_foldable_groups = 'def'
 highlight VertSplit guibg=Orange guifg=Black ctermbg=6 ctermfg=0
 highlight Visual cterm=NONE ctermbg=0 ctermfg=0 guibg=#af5f00 guifg=white
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:100%:hidden', '?'),
+  \                 <bang>0)
 " Normal-mode commands
 nnoremap <silent> <C-j> :MoveLine(1)<CR>
 nnoremap <silent> <C-k> :MoveLine(-1)<CR>
@@ -153,11 +159,3 @@ vnoremap <silent> <C-j> :MoveBlock(1)<CR>
 vnoremap <silent> <C-k> :MoveBlock(-1)<CR>
 vnoremap <silent> <C-l> :MoveHBlock(1)<CR>
 vnoremap <silent> <C-h> :MoveHBlock(-1)<CR>
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-command! -bang -nargs=? -complete=dir GFiles
-    \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
-command! -bang -nargs=* Rg
-    \ call fzf#vim#grep(
-    \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-    \   fzf#vim#with_preview(), <bang>0)

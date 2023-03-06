@@ -229,3 +229,4 @@ alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commi
 # __git_complete gm _git_merge
 # __git_complete gp _git_push
 # __git_complete gsps _git_show
+export PATH="/usr/local/cmake/bin:$PATH"
