@@ -6,9 +6,7 @@ set lazyredraw
 execute pathogen#infect()
 filetype plugin indent on
 set encoding=utf-8
-" autocmd StdinReadPre * let s:std_in=1
 set number
-" filetype plugin indent on
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -34,7 +32,6 @@ set rnu
 map <C-F> :FZF<space><CR>
 map <C-S> :Ag<space><CR>
 map <C-b> :Buff<CR>
-map <C-x> :bd
 map <C-r> :%s/
 map <C-,> :reg<CR>
 map <C-q> :q!<CR>
@@ -52,22 +49,20 @@ call plug#begin()
 
  Plug 'scrooloose/nerdtree'
  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
- Plug 'junegunn/fzf.vim'
+ Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
  Plug 'vim-airline/vim-airline'
  Plug 'airblade/vim-gitgutter'
  Plug 'tpope/vim-fugitive'
  Plug 'vim-airline/vim-airline-themes'
- Plug 'maksimr/vim-jsbeautify'
  Plug 'cohama/lexima.vim'
  Plug 'tpope/vim-commentary'
- Plug 'pangloss/vim-javascript'
- Plug 'mxw/vim-jsx'
  Plug 'terryma/vim-multiple-cursors'
- Plug 'tpope/vim-dispatch'
- Plug 'junegunn/seoul256.vim'
+ "Plug 'junegunn/seoul256.vim'
  Plug 'fedepujol/move.nvim'
  Plug 'wincent/vim-clipper'
-
+ Plug 'edkolev/tmuxline.vim'
+ "Plug 'cocopon/iceberg.vim'
+ Plug 'ghifarit53/tokyonight-vim'
 call plug#end()
 " Set paths for non-plugin manager managed plugin
 set runtimepath^=~/.vim/bundle/vim-move/plugin/move.vim
@@ -75,7 +70,12 @@ set timeoutlen=3000
 " Airline theme
 let g:airline_powerline_fonts=1
 let g:Powerline_symbols='unicode'
-let g:airline_theme='wombat'
+let g:airline_theme='zenburn'
+"colorscheme iceberg
+"colo seoul256-light
+set termguicolors
+let g:tokyonight_style = 'night'
+colorscheme tokyonight
 set backspace=indent,eol,start
 set guioptions=
 set splitright
@@ -87,9 +87,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
  Plugin 'VundleVim/Vundle.vim'
  Plugin 'editorconfig/editorconfig-vim'
- Plugin 'Yggdroot/indentLine'
- Plugin 't9md/vim-ruby-xmpfilter'
- Plugin 'kchmck/vim-coffee-script'
+ " Plugin 'nathanaelkane/vim-indent-guides'
 call vundle#end()
 
 noremap <S-l> gt
@@ -100,10 +98,13 @@ map <C-t> :NERDTreeToggle<CR>
 let g:nerdtree_tabs_autoclose=0
 :nnoremap <C-n> :bnext<CR>
 :nnoremap <C-p> :bprevious<CR>
+:nnoremap <C-f> :FzfLua files<CR>
+:nnoremap <C-b> :FzfLua buffers<CR>
+:nnoremap <C-s> :FzfLua grep<CR>
 
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-:nnoremap <silent> <Leader>s :Rg <C-R><C-W><CR>
+:nnoremap <silent> <Leader>s :FzfLua grep_cword <C-R><C-W><CR>
 :nnoremap <silent> <Leader>f :FZF -q <C-R><C-W><CR>
 :nnoremap <silent> <Leader>e :NERDTreeFind <CR>
 let g:user_emmet_leader_key='<Tab>'
@@ -112,10 +113,6 @@ let g:user_emmet_settings = {
     \      'extends' : 'jsx',
     \  }
   \}
-let g:indentLine_leadingSpaceEnabled = 1
-"let g:indentLine_leadingSpaceChar = '.'
-let g:indentLine_color_term = 180
-let g:indentLine_color_tty_light = 7
 let g:airline_left_sep = ''
 let g:airline#extensions#tabline#enabled = 1           " enable airline tabline
 let g:airline#extensions#tabline#show_close_button = 0 " remove 'X' at the end of the tabline
@@ -128,11 +125,8 @@ let g:airline#extensions#tabline#show_buffers = 0      " dont show buffers in th
 let g:airline#extensions#tabline#tab_min_count = 2     " minimum of 2 tabs needed to display the tabline
 let g:airline#extensions#tabline#show_tab_nr = 0       " disable tab numbers
 let g:airline#extensions#tabline#show_tab_type = 0     " disables the weird ornage arrow on the tabline
-
-let g:seoul256_background = 235
-color seoul256
-"let ayucolor="dark"
-"colorscheme ayu
+set cursorline
+set cursorcolumn
 autocmd BufEnter NERD_tree* :LeadingSpaceDisable
 set viminfo=
 nmap ,cs :call system('nc localhost 8377', expand("%"))<CR>
@@ -140,8 +134,8 @@ nmap ,cl :call system('nc localhost 8377', expand("%:p"))<CR>
 set foldmethod=syntax
 set nofoldenable
 let ruby_foldable_groups = 'def'
-highlight VertSplit guibg=Orange guifg=Black ctermbg=6 ctermfg=0
-highlight Visual cterm=NONE ctermbg=0 ctermfg=0 guibg=#af5f00 guifg=white
+" highlight VertSplit guibg=Orange guifg=Black ctermbg=6 ctermfg=0
+" highlight Visual cterm=NONE ctermbg=0 ctermfg=0 guibg=#af5f00 guifg=white
 " Normal-mode commands
 nnoremap <silent> <C-j> :MoveLine(1)<CR>
 nnoremap <silent> <C-k> :MoveLine(-1)<CR>
@@ -153,11 +147,3 @@ vnoremap <silent> <C-j> :MoveBlock(1)<CR>
 vnoremap <silent> <C-k> :MoveBlock(-1)<CR>
 vnoremap <silent> <C-l> :MoveHBlock(1)<CR>
 vnoremap <silent> <C-h> :MoveHBlock(-1)<CR>
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-command! -bang -nargs=? -complete=dir GFiles
-    \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
-command! -bang -nargs=* Rg
-    \ call fzf#vim#grep(
-    \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-    \   fzf#vim#with_preview(), <bang>0)
